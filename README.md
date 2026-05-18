@@ -4,7 +4,7 @@
 ## 6. Implementation of string manipulation.
 # Ex.No:11
   Formulate a C program to convert a given decimal number into its binary equivalent and display it.
-# Date : 
+# Date : 20-05-2026
 # Aim:
 To formulate a C program to convert a decimal number into its binary equivalent and display it.
 # Algorithm:
@@ -28,7 +28,23 @@ To formulate a C program to convert a decimal number into its binary equivalent 
 ### Step 8: 
    Stop
 # Program:
+```
+#include <stdio.h>
+int main() {
+    int n;
+    printf("Enter a decimal number: ");
+    scanf("%d", &n);
+    if (n == 0) { printf("0"); return 0; }
+    int bin[32], i = 0;
+    while (n > 0) { bin[i++] = n % 2; n /= 2; }
+    for (i--; i >= 0; i--) printf("%d", bin[i]);
+    return 0;
+}
+
+```
 # Output:
+<img width="357" height="133" alt="Screenshot 2026-05-18 110638" src="https://github.com/user-attachments/assets/24bb79e2-a356-4252-8413-cb43f6e03c00" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -67,7 +83,35 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 9: 
   Stop
 # Program:
+```
+#include <stdio.h>
+int main() {
+    int m,i,j,k,flag=0;
+    printf("Enter order: ");
+    scanf("%d",&m);
+    int a[m][m];
+    for(i=0;i<m;i++)
+        for(j=0;j<m;j++)
+            scanf("%d",&a[i][j]);
+
+    for(i=0;i<m;i++) {
+        int min=a[i][0], col=0;
+        for(j=1;j<m;j++) if(a[i][j]<min){ min=a[i][j]; col=j; }
+        int max=a[0][col];
+        for(k=1;k<m;k++) if(a[k][col]>max) max=a[k][col];
+        if(min==max) {
+            printf("Saddle point at (%d,%d) = %d\n",i,col,min);
+            flag=1;
+        }
+    }
+    if(!flag) printf("No saddle point\n");
+    return 0;
+}
+
+```
 # Output:
+<img width="382" height="273" alt="image" src="https://github.com/user-attachments/assets/2cd11ceb-9164-4287-b98c-391fdc7af5f6" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -101,7 +145,22 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 10: 
   Stop
 # Program:
+```
+#include <stdio.h>
+#include <string.h>
+int main() {
+    char s[100];
+    printf("Enter a string: ");
+    scanf("%[^\n]s", s);
+    for (int i = strlen(s)-1; i >= 0; i--)
+        printf("%c", s[i]);
+    return 0;
+}
+
+```
 # Output:
+<img width="326" height="145" alt="image" src="https://github.com/user-attachments/assets/7bf344ac-cedb-46bf-ba98-3d94425b36aa" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -135,7 +194,37 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 8:
   Stop
 # Program:
+```
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char s[100];
+    int visited[256] = {0}, i, j, n, count;
+
+    printf("Enter a string: ");
+    scanf("%[^\n]", s);
+
+    n = strlen(s);
+
+    for (i = 0; i < n; i++) {
+        if (!visited[(unsigned char)s[i]]) {
+            count = 0;
+            for (j = 0; j < n; j++) {
+                if (s[i] == s[j]) count++;
+            }
+            printf("'%c' occurs %d times\n", s[i], count);
+            visited[(unsigned char)s[i]] = 1;
+        }
+    }
+
+    return 0;
+}
+
+```
 # Output:
+<img width="316" height="213" alt="image" src="https://github.com/user-attachments/assets/12d88f9d-b6ac-43e1-be42-9f03339234ef" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -169,7 +258,24 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 8: 
   Stop
 # Program:
+```
+#include <stdio.h>
+#include <string.h>
+int main() {
+    char str[200], words[50][50]; int n=0,i,j;
+    printf("Enter a string: ");
+    scanf("%[^\n]s", str);
+    char *p=strtok(str," ");
+    while(p){ strcpy(words[n++],p); p=strtok(NULL," "); }
+    for(i=0;i<n;i++) for(j=i+1;j<n;j++) if(!strcmp(words[i],words[j])) words[j][0]='\0';
+    for(i=0;i<n;i++) if(words[i][0]) printf("%s ",words[i]);
+    return 0;
+}
+
+```
 # Output:
+<img width="445" height="153" alt="image" src="https://github.com/user-attachments/assets/46ebf0b4-6640-4253-b0d8-768674a74f68" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
